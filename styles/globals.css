@@ -1,0 +1,400 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --nav-shadow: 0px;
+  --global-font: "Causten";
+  --global-font-shift: 0;
+  --shadow-color: rgba(34, 20, 66, 0.03);
+  /* --shadow-color: rgba(9,21,47,0.04); */
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Thin.otf");
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-ExtraLight.otf");
+  font-style: normal;
+  font-weight: 200;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Light.otf");
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Regular.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Medium.otf");
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-SemiBold.otf");
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Bold.otf");
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-ExtraBold.otf");
+  font-style: normal;
+  font-weight: 800;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Causten";
+  src: url("/fonts/causten/Causten-Black.otf");
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+}
+
+/* @font-face {
+  font-family: "Eina";
+  src: url("/fonts/eina/Eina01-Regular.ttf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Eina";
+  src: url("/fonts/eina/Eina01-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "Eina";
+  src: url("/fonts/eina/Eina01-Bold.ttf");
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@100;200;300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;300;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;300;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Guntur:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap'); */
+
+html,
+body {
+  font-family: var(--global-font);
+  /* line-height: 2.0; */
+}
+
+button {
+  padding: 0.6em 0.2em 0.1em 0.8em;
+}
+
+p {
+  margin-bottom: var(--global-font-shift);
+}
+
+nav {
+  background-color: rgba(255,255,255,1);
+}
+@supports (backdrop-filter:saturate(180%)) and (backdrop-filter:blur(20px)) {
+  nav {
+    background-color: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+
+.h1 {
+  @apply text-h1 text-content-title font-bold
+}
+
+.h2 {
+  @apply text-h2 text-content-title font-bold leading-snug
+}
+
+.h3 {
+  @apply text-h2x text-content-title font-normal leading-snug
+}
+
+.h4 {
+  @apply text-lg text-content-normal font-semibold
+}
+
+.button {
+  @apply text-base leading-loose py-3 px-6 align-text-top rounded-full font-semibold text-white bg-accent-dark;
+}
+
+.button-subtle {
+  @apply text-base leading-loose py-3 px-6 align-text-top rounded-full font-semibold text-accent-dark bg-accent-very-light;
+}
+
+.button-narrow {
+  @apply text-base leading-loose py-1 px-4 align-text-top rounded-full font-semibold text-white bg-accent-dark;
+}
+
+.button-subtle-narrow {
+  @apply text-base leading-loose py-1 px-4 align-text-top rounded-full font-semibold text-accent-dark bg-accent-very-light;
+}
+
+.button-open {
+  @apply text-base leading-loose py-2 px-5 align-text-top rounded-full font-bold text-accent-dark box-border border-3 border-accent-dark;
+}
+
+
+
+.button2 {
+  @apply text-base leading-loose py-3 px-6 align-text-top rounded-full font-semibold text-white bg-accent-important;
+}
+
+.button2-subtle {
+  @apply text-base leading-loose py-3 px-6 align-text-top rounded-full font-semibold text-accent-dark bg-accent-very-light;
+}
+
+.button2-narrow {
+  @apply text-base leading-loose py-1 px-4 align-text-top rounded-full font-semibold text-white bg-accent-important;
+}
+
+.button2-subtle-narrow {
+  @apply text-base leading-loose py-1 px-4 align-text-top rounded-full font-semibold text-accent-dark bg-accent-very-light;
+}
+
+.button2-open {
+  @apply text-base leading-loose py-2 px-5 align-text-top rounded-full font-bold text-accent-important box-border border-3 border-accent-important;
+}
+
+.button2-open-narrow {
+  @apply text-base leading-loose py-0 px-4 align-text-top rounded-full font-bold text-accent-important box-border border-3 border-accent-important;
+}
+
+
+
+
+.icon {
+  @apply flex justify-center items-center w-16 h-16 rounded-2xl bg-accent-very-light fill-current text-content-subtitle;
+}
+
+.icon-with-stroke {
+  @apply flex justify-center items-center w-16 h-16 rounded-2xl bg-accent-very-light fill-current stroke-current text-content-subtitle;
+}
+
+.icon2 {
+  @apply flex justify-center items-center w-16 h-16 rounded-2xl fill-current text-content-subtitle;
+}
+
+.icon-dark {
+  @apply flex justify-center items-center w-16 h-16 rounded-2xl bg-white bg-opacity-10;
+  fill:rgb(216,214,222);
+}
+
+.icon-dark-with-stroke {
+  @apply flex justify-center items-center w-16 h-16 rounded-2xl bg-white bg-opacity-10;
+  fill:rgba(255,255,255,0.8);
+  stroke:rgba(255,255,255,0.8);
+}
+
+/* .cards-shadow {
+  filter: 
+    drop-shadow(0px 6px 4px rgba(34, 20, 66, 0.03))
+    drop-shadow(0px 10px 8px rgba(34, 20, 66, 0.03))
+    drop-shadow(0px 18px 16px rgba(34, 20, 66, 0.03));
+} */
+
+.cards-shadow {
+  filter: 
+    drop-shadow(0px 6px 4px rgba(34, 20, 66, 0.03))
+    drop-shadow(0px 10px 8px rgba(34, 20, 66, 0.03))
+    drop-shadow(0px 18px 16px rgba(34, 20, 66, 0.03));
+}
+
+.nav-shadow {
+  box-shadow: 
+    0 4px  4px  rgba(34, 20, 66, 0.03), 
+    0 8px 8px  rgba(34, 20, 66, 0.03),
+    0 16px 16px rgba(34, 20, 66, 0.03);
+}
+
+
+/* .cards-shadow {
+  filter: 
+    drop-shadow(0px 8px 4px var(--shadow-color))
+    drop-shadow(0px 12px 8px var(--shadow-color))
+    drop-shadow(0px 20px 16px var(--shadow-color));
+} */
+
+.cards-shadow-dark {
+  filter: 
+    drop-shadow(0px 4px 4px rgba(27, 19, 49, 0.1))
+    drop-shadow(0px 8px 8px rgba(27, 19, 49, 0.1))
+    drop-shadow(0px 16px 16px rgba(27, 19, 49, 0.3));
+}
+
+.section {
+  @apply mx-auto pl-6 pr-6;
+  max-width: 1200px;
+}
+
+
+/* header{
+  position: sticky;
+  top: -1px;
+  font-size: 3em;
+  transition: .2s ease-out;
+  
+  &.isSticky{
+    font-size: 2em;
+    &::after{
+      content:" is sticky";
+      color: salmon;
+    }
+  }
+} */
+
+.sub-nav {
+  transition: top 1s ease;
+}
+
+.sub-nav-visible {
+  top:0
+}
+
+.sub-nav-hidden {
+  top:-100px
+}
+
+.marketplace-background .tile {
+  transition: 0.5s;
+}
+
+.marketplace-background .tile .icon {
+  transition: 0.5s;
+}
+
+.marketplace-background .tile .inside {
+  transition: 1.5s;
+}
+
+.hidden-marketplace-background .tile .inside {
+  transform: scale(1) !important;
+}
+
+.hidden-marketplace-background .tile {
+  transform: scale3d(.1,.1,1) !important;
+}
+
+.hidden-marketplace-background .tile .icon {
+  opacity: 0;
+}
+
+.language-layers .top-layer {
+  transition: 1.5s;
+  transition-delay: 0.5s;
+}
+
+.language-layers .middle-layer {
+  transition: 1.5s;
+  transition-delay: 0.5s;
+}
+
+.language-layers.collapsed .top-layer {
+  transform: translate(0,143px);
+}
+
+.language-layers.collapsed .middle-layer {
+  transform: translate(0,70px);
+}
+
+
+.language-layers.expanded .top-layer .inside {
+  animation: language-layers-top-layer-float 6s ease-in-out infinite;
+  transform-box: view-box;
+}
+
+/* .language-layers.collapsed .top-layer .inside {
+  animation: language-layers-top-layer-float 6s ease-in-out 1;
+} */
+
+.language-layers.expanded .middle-layer .inside {
+  animation: language-layers-middle-layer-float 6s ease-in-out infinite;
+}
+
+/* .language-layers.collapsed .middle-layer .inside {
+  animation: language-layers-middle-layer-float 6s ease-in-out 1;
+} */
+
+
+@keyframes language-layers-top-layer-float {
+	0%   { transform: translatey(0px);  }
+	50%  { transform: translatey(20px); }
+	100% { transform: translatey(0px);  }
+}
+
+@keyframes language-layers-middle-layer-float {
+	0%   { transform: translatey(0px);  }
+	50%  { transform: translatey(10px); }
+	100% { transform: translatey(0px);  }
+}
+
+.tile .icon .secondary {
+  fill:rgba(255,255,255,0.7);
+}
+
+.tile .icon .primary {
+  fill:rgba(255,255,255,1);
+}

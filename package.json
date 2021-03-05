@@ -1,0 +1,20 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "npm run build; rm -Rf docs; next export -o docs; touch docs/.nojekyll"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.4",
+    "babel-plugin-inline-react-svg": "^2.0.0",
+    "next": "10.0.6",
+    "postcss": "^8.2.4",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tailwindcss": "^2.0.2"
+  }
+}
