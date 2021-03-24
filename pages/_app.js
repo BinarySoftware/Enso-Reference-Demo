@@ -34,5 +34,5 @@ class MyApp extends Component {
     return <Component {...pageProps} />
   }
 }
-s
+
 export default MyApp
