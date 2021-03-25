@@ -66,12 +66,13 @@ function TextContainer({ children, className, tp="raw",...rest }){
     return (
         <div className={className+" pt-5"} ref={ref} {...rest} style={{backgroundColor: bg, borderRadius: 14 + "px"}}>
             <span className="text-accent-important text-2xl">{tpName}</span><br/>
-            <div className={""}>
+            <div className={"mt-5"}>
                 {children}
             </div>
         </div>
     )
 }
+
 function CodeContainer({ children, className, tp="raw",...rest }){
     const ref = React.createRef()
     let bg = "rgb(240, 240, 240)"
@@ -126,13 +127,44 @@ class Documentation extends React.Component {
 class InnerDocumentation extends React.Component {
     render() {
         return (
-            <div className="mt-5">
+            <div className="mt-5 mb-16">
                 <div className="">
                     {this.props.children}
                 </div>
             </div>
         )
     }
+}
+
+function Tag({ children, name, desc=""}){
+    let bg = "rgba(240, 240, 240, 0.76)"
+    if (name === "DEPRECATED"){
+        bg = "rgba(252, 245, 217, 0.76)"
+    } else if (name === "ADDED"){
+        bg = "rgba(198, 251, 229, 0.76)"
+    } else if (name === "UPCOMING"){
+        bg = "rgba(226, 240, 255, 0.76)"
+    } else if (name === "MODIFIED"){
+        bg = "rgba(241, 226, 255, 0.76)"
+    }
+    return (
+        <div className="m-1 p-5 px-auto py-4" style={{backgroundColor: bg, borderRadius: 14 + "px", minWidth:80+"px"}}>
+            <span className="opacity-80 text-accent-important">{name} {desc}</span><br/>
+        </div>
+    )
+}
+
+function DocHeader({ children, name, args="", tags}){
+    return (
+        <SubSection>
+            <div className="text-accent-dark leading-3 md:leading-tight">
+                <div className="mb-3" style={{display:"flex"}}>
+                    {children}
+                </div>
+                <span className="text-3xl text-accent-important display-flow">{name} <span className="opacity-60">{args}</span></span><br/>
+            </div>
+        </SubSection>
+    )
 }
 
 
@@ -149,12 +181,9 @@ export default function Main(props) {
             <div style={{height:'var(--nav-offset)'}}></div>
             <div className="">
                 <Documentation>
-                    <SubSection>
-                        <div className="text-3xl md:text-3xl font-extrabold text-accent-dark leading-3 md:leading-tight">
-                            <span className="opacity-30 text-accent-important text-2xl">ADDED in 2.0</span><br/>
-                            <span className="text-accent-important display-flow">Option <span className="opacity-60">a</span></span><br/>
-                        </div>
-                    </SubSection>
+                    <DocHeader name="Option" args="a">
+                        <Tag name="ADDED" desc="in 2.0"></Tag>
+                    </DocHeader>
 
                     <SubSection>
                         <TextContainer>
@@ -195,12 +224,12 @@ export default function Main(props) {
                     </SubSection>
 
                     <SubSection>
-                        <span className="text-accent-important text-3xl">Constructors</span><br/>
+                        <span className="font-extrabold text-accent-important text-3xl">Constructors</span><br/>
                         <InnerDocumentation>
-                            <SubSection>
-                                <span className="opacity-30 text-accent-important">ADDED in 2.0</span><br/>
-                                <span className="text-accent-important display-flow">Some <span className="opacity-60">a</span></span><br/>
-                            </SubSection>
+                            <DocHeader name="Some" args="a">
+                                <Tag name="UPCOMING" desc="in 2.0"></Tag>
+                                <Tag name="PRIVATE"></Tag>
+                            </DocHeader>
 
                             <SubSection>
                                 <TextContainer>
@@ -210,11 +239,10 @@ export default function Main(props) {
                         </InnerDocumentation>
 
                         <InnerDocumentation>
-                            <SubSection>
-                                <span className="opacity-30 text-accent-important">ADDED in 2.0</span><br/>
-                                <span className="opacity-30 text-accent-important">PRIVATE</span><br/>
-                                <span className="text-accent-important display-flow">None</span><br/>
-                            </SubSection>
+                            <DocHeader name="None">
+                                <Tag name="ADDED" desc="in 2.0"></Tag>
+                                <Tag name="DEPRECATED"></Tag>
+                            </DocHeader>
 
                             <SubSection>
                                 <TextContainer>
@@ -232,12 +260,11 @@ export default function Main(props) {
                     </SubSection>
 
                     <SubSection>
-                        <span className="text-accent-important text-3xl">Methods</span><br/>
+                        <span className="font-extrabold text-accent-important text-3xl">Methods</span><br/>
                         <InnerDocumentation>
-                            <SubSection>
-                                <span className="opacity-30 text-accent-important">DEPRECATED in 2.1</span><br/>
-                                <span className="text-accent-important display-flow">to_integer <span className="opacity-60">value</span></span><br/>
-                            </SubSection>
+                            <DocHeader name="to_Integer" args="v">
+                                <Tag name="MODIFIED" desc="in 2.0"></Tag>
+                            </DocHeader>
 
                             <SubSection>
                                 <TextContainer>
