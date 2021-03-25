@@ -38,12 +38,46 @@ export async function getStaticProps() {
 /// === Content ===
 /// ===============
 
-function TextContainer({ children, className, ...rest }){
+function TextContainer({ children, className, tp="raw",...rest }){
     const ref = React.createRef()
-    className = (className ? className : "")+" mb-5"
-    
+    className = (className ? className : "") + " p-10"
+    let tpName = tp == "raw" ? "" : tp
+    if (tpName === ""){
+        return (
+            <div className={className + " pb-0"} ref={ref} {...rest}>
+                <div className={""}>
+                    {children}
+                </div>
+            </div>
+        )
+    }
+
+    className += " mt-5 mb-10"
+
+    let bg = "rgb(248, 248, 248)"
+    if (tp === "Important"){
+        bg = "rgb(252, 245, 217)"
+    } else if (tp === "Info"){
+        bg = "rgb(198, 251, 229)"
+    } else if (tp === "Code"){
+        bg = "rgb(240, 240, 240)"
+    }
+
     return (
-        <div className={className} ref={ref} {...rest}>
+        <div className={className+" pt-5"} ref={ref} {...rest} style={{backgroundColor: bg, borderRadius: 14 + "px"}}>
+            <span className="text-accent-important text-2xl">{tpName}</span><br/>
+            <div className={""}>
+                {children}
+            </div>
+        </div>
+    )
+}
+function CodeContainer({ children, className, tp="raw",...rest }){
+    const ref = React.createRef()
+    let bg = "rgb(240, 240, 240)"
+
+    return (
+        <div className={className+" p-10 mt-5 mb-0"} ref={ref} {...rest} style={{backgroundColor: bg, borderRadius: 14 + "px"}}>
             <div className={""}>
                 {children}
             </div>
@@ -55,7 +89,7 @@ function TextContainer({ children, className, ...rest }){
 class Container extends React.Component {
     render() {
         return (
-            <div className="mx-auto w-full xlm:container" style={{maxWidth:"1200px"}}>
+            <div className="mx-auto xlm:container">
                 <div className="">
                     {this.props.children}
                 </div>
@@ -72,7 +106,30 @@ class SubSection extends React.Component {
                 <Container className="mb-5">
                     {this.props.children}
                 </Container>
-                <br/>
+            </div>
+        )
+    }
+}
+
+class Documentation extends React.Component {
+    render() {
+        return (
+            <div className="mx-20 lg:mx-auto" style={{maxWidth:"900px"}}>
+                <div className="">
+                    {this.props.children}
+                </div>
+            </div>
+        )
+    }
+}
+
+class InnerDocumentation extends React.Component {
+    render() {
+        return (
+            <div className="mt-5">
+                <div className="">
+                    {this.props.children}
+                </div>
             </div>
         )
     }
@@ -91,7 +148,7 @@ export default function Main(props) {
 
             <div style={{height:'var(--nav-offset)'}}></div>
             <div className="">
-                <Container>
+                <Documentation>
                     <SubSection>
                         <div className="text-3xl md:text-3xl font-extrabold text-accent-dark leading-3 md:leading-tight">
                             <span className="opacity-30 text-accent-important text-2xl">ADDED in 2.0</span><br/>
@@ -101,9 +158,11 @@ export default function Main(props) {
 
                     <SubSection>
                         <TextContainer>
-                            <span className="opacity-30 text-accent-important text-2xl">Optional values</span><br/>
+                            <span className="text-2xl">Optional values</span>
                         </TextContainer>
+                    </SubSection>
 
+                    <SubSection>
                         <TextContainer>
                             Type Option represents an optional value: every Option is either Some and contains a value, or None, and does not. <br/>
                             Option types are very common in Enso code, as they have a number of uses:<br/>
@@ -116,51 +175,84 @@ export default function Main(props) {
                             </ul>
                         </TextContainer>
 
-                        <TextContainer>
-                            Info<br/>
+                        <TextContainer tp="Info">
                             Options are commonly paired with pattern matching to query the presence of a value and take action, always accounting for the None case.<br/>
                         </TextContainer>
 
-                        <TextContainer>
-                            Example<br/>
+                        <TextContainer tp="Example">
                             Creates a new test group, desribing properties of the object described by this.<br/>
-                            <code>Suite.run |</code><br/>
-                            <code>   describe "Number" |</code><br/>
-                            <code>       it "should define addition" |</code><br/>
-                            <code>           2+3 . should_equal 5</code><br/>
-                            <code>       it "should define multiplication" |</code><br/>
-                            <code>            2*3 . should_equal 6</code><br/>
+                            <CodeContainer>
+                                <pre>
+                                <code>Suite.run |</code><br/>
+                                <code>    describe "Number" |</code><br/>
+                                <code>        it "should define addition" |</code><br/>
+                                <code>            2+3 . should_equal 5</code><br/>
+                                <code>        it "should define multiplication" |</code><br/>
+                                <code>            2*3 . should_equal 6</code><br/>
+                                </pre>
+                            </CodeContainer>
                         </TextContainer>
                     </SubSection>
 
                     <SubSection>
-                        <span className="opacity-30 text-accent-important text-2xl">Constructors</span><br/>
-                        <SubSection>
-                        ADDED in 2.0<br/>
-                        Some a<br/>
-                        The Some type indicates a presence of a value.<br/>
-                        </SubSection>
+                        <span className="text-accent-important text-3xl">Constructors</span><br/>
+                        <InnerDocumentation>
+                            <SubSection>
+                                <span className="opacity-30 text-accent-important">ADDED in 2.0</span><br/>
+                                <span className="text-accent-important display-flow">Some <span className="opacity-60">a</span></span><br/>
+                            </SubSection>
 
-                        <SubSection>
-                        ADDED in 2.0<br/>
-                        PRIVATE<br/>
-                        None<br/>
-                        The None type indicates a lack of a value.<br/>
-                        It is a very common type and is used by such types as Maybe or List. <br/>
-                        Also, None is the return value of functions which do not return an explicit value.<br/>
-                        </SubSection>
+                            <SubSection>
+                                <TextContainer>
+                                    The Some type indicates a presence of a value.<br/>
+                                </TextContainer>
+                            </SubSection>
+                        </InnerDocumentation>
+
+                        <InnerDocumentation>
+                            <SubSection>
+                                <span className="opacity-30 text-accent-important">ADDED in 2.0</span><br/>
+                                <span className="opacity-30 text-accent-important">PRIVATE</span><br/>
+                                <span className="text-accent-important display-flow">None</span><br/>
+                            </SubSection>
+
+                            <SubSection>
+                                <TextContainer>
+                                    The None type indicates a lack of a value.<br/>
+                                </TextContainer>
+                            </SubSection>
+
+                            <SubSection>
+                                <TextContainer>
+                                    It is a very common type and is used by such types as Maybe or List. <br/>
+                                    Also, None is the return value of functions which do not return an explicit value.<br/>
+                                </TextContainer>
+                            </SubSection>
+                        </InnerDocumentation>
                     </SubSection>
 
                     <SubSection>
-                        <span className="opacity-30 text-accent-important text-2xl">Methods</span><br/>
-                        <SubSection>
-                        pow x y<br/>
-                        The pow function calculates power of integers.<br/>
-                        Important<br/>
-                        Foo bar baz here's my doc body.<br/>
-                        </SubSection>
+                        <span className="text-accent-important text-3xl">Methods</span><br/>
+                        <InnerDocumentation>
+                            <SubSection>
+                                <span className="opacity-30 text-accent-important">DEPRECATED in 2.1</span><br/>
+                                <span className="text-accent-important display-flow">to_integer <span className="opacity-60">value</span></span><br/>
+                            </SubSection>
+
+                            <SubSection>
+                                <TextContainer>
+                                    Casts value to <code>Integer</code>.<br/>
+                                </TextContainer>
+                            </SubSection>
+                            
+                            <SubSection>
+                                <TextContainer tp="Important">
+                                    Foo bar baz boooo.
+                                </TextContainer>
+                            </SubSection>
+                        </InnerDocumentation>
                     </SubSection>
-                </Container>
+                </Documentation>
             </div>
         </div>
     )
